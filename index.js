@@ -17,9 +17,3 @@ class SteamMarket {
 module.exports = SteamMarket;
 
 let sm = new SteamMarket();
-
-
-sm.getPopular(0, "EUR", 10, '252490').then(data => {
-    console.log(data.results[0]);
-    data.results[0].getId().then(id => {console.log(id);});
-  });
