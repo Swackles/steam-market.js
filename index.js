@@ -1,5 +1,5 @@
 const Search = require('./lib/search');
-const Histogram = require('./histogram');
+const Histogram = require('./lib/histogram');
 const urlBuilder = require('./lib/urlBuilder');
 const request = require('./lib/request');
 
