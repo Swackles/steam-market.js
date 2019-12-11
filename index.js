@@ -1,4 +1,5 @@
 const Search = require('./lib/search');
+const Histogram = require('./histogram');
 const urlBuilder = require('./lib/urlBuilder');
 const request = require('./lib/request');
 
@@ -9,5 +10,11 @@ module.exports = {
 
     if (data) return new Search(data);
     else return null;
+  },
+
+  async getHistogram(nameId, currency = "USD") {
+    const url = urlBuilder.generateHistogram(nameId, currency);
+    let data = await request(url);
+    return new Histogram(data);
   }
 }
