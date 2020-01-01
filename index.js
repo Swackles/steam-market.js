@@ -23,10 +23,6 @@ module.exports = {
   async getHistogram(nameId, currency = "USD") {
     const url = urlBuilder.generateHistogram(nameId, currency);
     let data = await request(url);
-    try {
-      return new Histogram(data);
-    } catch {
-      throw new Error(data);
-    }
+    return new Histogram(data);
   }
 }
