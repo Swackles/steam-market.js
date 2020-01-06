@@ -1,5 +1,6 @@
 const Search = require('./lib/search');
 const Histogram = require('./lib/histogram');
+const Inventory = require('./lib/inventory');
 const urlBuilder = require('./lib/urlBuilder');
 const request = require('./lib/request');
 
@@ -24,5 +25,16 @@ module.exports = {
     const url = urlBuilder.generateHistogram(nameId, currency);
     let data = await request(url);
     return new Histogram(data);
+  },
+
+  async getInventory(steamID64, appId, count = 5000, language = 'english') {
+    const url = urlBuilder.generateInventory(steamID64, appId, count, language);
+    try {
+      let data = await request(url);
+      return new Inventory(data);
+    } catch(err) {
+      if (err.response && err.response.status == 403) return null;
+      else throw(err);
+    }
   }
 }
