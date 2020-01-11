@@ -33,7 +33,8 @@ module.exports = {
       let data = await request(url);
       return new Inventory(data);
     } catch(err) {
-      if (err.response && err.response.status == 403) return null;
+      if (err.response && err.response.status == 403) return 'Profile is private';
+      if (err.response && err.response.status == 404) return 'User dosent\'t exist'
       else throw(err);
     }
   }
