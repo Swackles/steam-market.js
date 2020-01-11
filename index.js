@@ -34,7 +34,7 @@ module.exports = {
       return new Inventory(data);
     } catch(err) {
       if (err.response && err.response.status == 403) return 'Profile is private';
-      if (err.response && err.response.status == 404) return 'User dosent\'t exist'
+      if (err.response && err.response.status == 404) return 'User dosen\'t exist'
       else throw(err);
     }
   }
